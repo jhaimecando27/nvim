@@ -1,15 +1,15 @@
 # Neovim
-This is a build/configuration of [Neovim From Scratch](https://github.com/LunarVim/Neovim-from-scratch).
+This is my build/configuration of [Neovim From Scratch](https://github.com/LunarVim/Neovim-from-scratch).
 
 ## Changes
 1. plugins.lua
-  - preservim/tagbar
-  - Color Schemes
-    - dracula
-    - tomorrow-theme
-    - gruvbox
-    - ayu-vim
-    - onedark
+    - preservim/tagbar
+    - Added more color schemes
+      - dracula
+      - tomorrow-theme
+      - gruvbox
+      - ayu-vim
+      - onedark
 2. Keymaps.lua
 ```lua
 -- Normal --
@@ -33,6 +33,6 @@ try
 termguicolors = true
 ```
 5. whickey.lua
-  - I change shortcut key for terminal to letter "T" and set `TagbarToggle` to letter "t"
+    - I change shortcut key for terminal to letter "T" and set `TagbarToggle` to letter "t"
 6. alpha.lua
-  - I changed the footer name to my name
+    - I changed the footer name to my name
