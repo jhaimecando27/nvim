@@ -1,6 +1,7 @@
 vim.cmd [[
 try
-  colorscheme ayu
+  colorscheme dracula
+  hi normal guibg=000000
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark
