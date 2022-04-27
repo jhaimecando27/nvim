@@ -1,8 +1,6 @@
 vim.cmd [[
 try
-  set background=light
-  colorscheme gruvbox
-  set guicursor+=i:block-cursor
+  colorscheme ayu
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark

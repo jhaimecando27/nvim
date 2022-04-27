@@ -46,6 +46,8 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Make faster to exit
 keymap("i", "<C-j>", "<ESC>j", opts)
 keymap("i", "<C-k>", "<ESC>k", opts)
+keymap("i", "<F9>", "<C-R>=strftime('%m/%d/%Y')<CR>", opts)
+keymap("i", "<F10>", "<C-R>=strftime('%H:%M')<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
