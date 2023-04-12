@@ -1,21 +1,31 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
+end
 
--- Only required if you have packer configured as `opt`
-vim.cmd.packadd("packer.nvim")
+local packer_bootstrap = ensure_packer()
 
 return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
+	-- File navigation
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
-		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+	-- Code highlighter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
+	-- LSP
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v1.x",
@@ -39,9 +49,24 @@ return require("packer").startup(function(use)
 		},
 	})
 
-	use({ "jose-elias-alvarez/null-ls.nvim" })
+    -- Inject LSP diagnostics, code actions, and more via Lua
+	use("jose-elias-alvarez/null-ls.nvim")
 
+	-- Others
 	use("folke/zen-mode.nvim")
-	use({ "catppuccin/nvim", as = "catppuccin" })
+
+	-- Used for markdown completion
 	use("vimwiki/vimwiki")
+
+	-- Metrics about your programming
+	use("wakatime/vim-wakatime")
+
+	-- Colorscheme
+	use({ "catppuccin/nvim", as = "catppuccin" })
+
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)
