@@ -1,5 +1,10 @@
+local zen_mode_ok, zen_mode = pcall(require, "zen_mode")
+if not zen_mode_ok then
+	return
+end
+
 vim.keymap.set("n", "<leader>zz", function()
-	require("zen-mode").setup({
+	zen_mode.setup({
 		window = {
 			width = 90,
 			height = 0.9,
@@ -17,5 +22,5 @@ vim.keymap.set("n", "<leader>zz", function()
 			},
 		},
 	})
-	require("zen-mode").toggle()
+	zen_mode.toggle()
 end)

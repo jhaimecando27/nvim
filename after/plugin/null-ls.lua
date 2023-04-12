@@ -1,8 +1,17 @@
-local null_ls = require("null-ls")
+local null_ls_ok, null_ls = pcall(require, "null_ls")
+if not null_ls_ok then
+	return
+end
+
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
+		formatting.stylua,
+		formatting.prettier,
+		formatting.black,
+
+		diagnostics.flak8,
 	},
 })
