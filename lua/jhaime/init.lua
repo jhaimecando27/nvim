@@ -1,5 +1,6 @@
 require("jhaime.set")
 require("jhaime.remap")
+require("jhaime.packer")
 
 local augroup = vim.api.nvim_create_augroup
 local Group1 = augroup('jhaime', {})
