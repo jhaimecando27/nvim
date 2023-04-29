@@ -76,6 +76,19 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+    -- Let null-ls do the formatter
+	if client.name == "tsserver" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	if client.name == "lua_ls" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	if client.name == "pylsp" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
 end)
 
 lsp.setup()
