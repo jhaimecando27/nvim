@@ -3,6 +3,11 @@ if not lsp_ok then
 	return
 end
 
+local config_ok, config = pcall(require, "lspconfig")
+if not config_ok then
+	return
+end
+
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -57,7 +62,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
-lsp.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	-- Use LspAttach autocommand to only map the following keys
@@ -89,7 +94,13 @@ lsp.on_attach(function(client, bufnr)
 	if client.name == "pylsp" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-end)
+end
+
+lsp.on_attach(on_attach)
+
+config["dartls"].setup({
+    on_attach = on_attach
+})
 
 lsp.setup()
 
