@@ -8,6 +8,11 @@ if not config_ok then
 	return
 end
 
+local fidget_ok, fidget = pcall(require, "fidget")
+if fidget_ok then
+    fidget.setup {}
+end
+
 lsp.preset("recommended")
 
 lsp.ensure_installed({
