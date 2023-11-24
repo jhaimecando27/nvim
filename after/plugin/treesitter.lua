@@ -21,6 +21,7 @@ treesitter.setup({
         "htmldjango",
         "sql",
         "dart",
+        "php"
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
