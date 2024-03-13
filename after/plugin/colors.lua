@@ -16,3 +16,5 @@ catppuccin.setup({
 vim.cmd.colorscheme("catppuccin")
 
 vim.cmd("hi StatusLine guifg=black guibg=white")
+
+require('lualine').setup()
