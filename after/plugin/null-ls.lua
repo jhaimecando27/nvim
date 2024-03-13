@@ -9,7 +9,7 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
     sources = {
         formatting.prettier,
-        formatting.autopep8,
+        formatting.black,
         formatting.stylua,
 
         diagnostics.flake8,
