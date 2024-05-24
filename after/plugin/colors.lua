@@ -26,4 +26,16 @@ monokai_pro.setup({
 vim.cmd.colorscheme("monokai-pro")
 vim.cmd("hi StatusLine guifg=black guibg=white")
 
-require('lualine').setup()
+-- Minimal statusline
+-- REF: https://www.reddit.com/r/neovim/comments/maragr/minimal_statusline_in_lua/
+local fn, cmd = vim.fn, vim.cmd
+function my_statusline()
+  local branch = fn.FugitiveHead()
+
+  if branch and #branch > 0 then
+    branch = '  '..branch
+  end
+
+  return branch..' %f%m%=%l:%c'
+end
+cmd("set statusline=%!luaeval('my_statusline()')")
