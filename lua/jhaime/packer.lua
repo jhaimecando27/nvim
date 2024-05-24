@@ -63,6 +63,7 @@ return require("packer").startup(function(use)
 
 	-- Colorscheme
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "loctvl842/monokai-pro.nvim" })
 
 	-- CoPilot
 	use("github/copilot.vim")
